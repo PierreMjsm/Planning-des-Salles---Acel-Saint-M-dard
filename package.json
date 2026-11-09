@@ -26,9 +26,33 @@
   "build": {
     "appId": "com.planning-des-salles.app",
     "productName": "Planning des salles",
-    "directories": { "output": "release" },
-    "files": ["dist/**/*", "electron/**/*", "package.json"],
-    "win": { "target": "nsis" },
-    "nsis": { "oneClick": true, "perMachine": false }
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Planning des salles",
+      "runAfterFinish": true,
+      "language": "1036"
+    }
   }
 }

@@ -1,0 +1,22 @@
+const { contextBridge, ipcRenderer } = require("electron");
+contextBridge.exposeInMainWorld("salleplanFS", {
+  isElectron: true,
+  getConfig: () => ipcRenderer.invoke("fs:getConfig"),
+  chooseFolder: () => ipcRenderer.invoke("fs:chooseFolder"),
+  setFolder: (dir) => ipcRenderer.invoke("fs:setFolder", dir),
+  useDefaultFolder: () => ipcRenderer.invoke("fs:useDefaultFolder"),
+  readData: () => ipcRenderer.invoke("fs:readData"),
+  stat: () => ipcRenderer.invoke("fs:stat"),
+  writeData: (payload) => ipcRenderer.invoke("fs:writeData", payload),
+  backup: (data) => ipcRenderer.invoke("fs:backup", data),
+  openFolder: () => ipcRenderer.invoke("fs:openFolder"),
+  getArchiveDir: () => ipcRenderer.invoke("fs:getArchiveDir"),
+  chooseArchiveDir: () => ipcRenderer.invoke("fs:chooseArchiveDir"),
+  archivePdf: (name, sub) => ipcRenderer.invoke("fs:archivePdf", name, sub),
+  revealFile: (file) => ipcRenderer.invoke("fs:revealFile", file),
+  openArchiveDir: () => ipcRenderer.invoke("fs:openArchiveDir"),
+  listBackups: () => ipcRenderer.invoke("fs:listBackups"),
+  readBackup: (name) => ipcRenderer.invoke("fs:readBackup", name),
+  presence: (actor, id) => ipcRenderer.invoke("fs:presence", actor, id),
+  savePdf: (name) => ipcRenderer.invoke("fs:savePdf", name),
+});

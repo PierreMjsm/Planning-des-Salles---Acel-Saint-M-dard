@@ -1,0 +1,58 @@
+{
+  "name": "planning-des-salles",
+  "productName": "Planning des salles",
+  "version": "2.5.0",
+  "description": "Planning des salles, réservations, fermetures et facturation pour une maison de quartier",
+  "author": "Planning des salles",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dist": "vite build && electron-builder --win --publish never"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "electron": "^31.7.0",
+    "electron-builder": "^24.13.3",
+    "vite": "^5.4.8"
+  },
+  "build": {
+    "appId": "com.planning-des-salles.app",
+    "productName": "Planning des salles",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Planning des salles",
+      "runAfterFinish": true,
+      "language": "1036"
+    }
+  }
+}
